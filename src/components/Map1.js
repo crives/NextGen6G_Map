@@ -9,7 +9,7 @@ export default class Map1 extends Component {
     }
     render() {
         return (
-           this.props.incidents ?
+           this.props.accidents ?
            <Map 
            center={[this.state.lat, this.state.lng]} 
            zoom={this.state.zoom} 
@@ -19,16 +19,17 @@ export default class Map1 extends Component {
                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                />
                {
-                 this.props.incidents.map(incident => {
-                      const point = [incident['point']['coordinates'][1],                 incident['point']['coordinates'][0]]
-                
+                 this.props.accidents.map(accidents => {
+                      const point = [accidents['centerLongitude'],                 accidents['centerLatitude']]
        
+       console.log(point);
+                      /// CHANGE THIS ////
        return (
-           <Marker position={point} key={incident['incident_number']} >
+           <Marker position={point} key={accidents['Center_Lat']} >
                 <Popup>
-                   <span>ADDRESS: {incident['address']}, {incident['city']} - {incident['zip_code']}</span>
+                   {/* <span>ADDRESS: {accidents['address']}, {incident['city']} - {incident['zip_code']}</span> */}
                  <br/>
-                   <span>BATTALION: {incident['battalion']}</span><br/>
+                   {/* <span>BATTALION: {incident['battalion']}</span><br/> */}
                 </Popup>
             </Marker>
          )
