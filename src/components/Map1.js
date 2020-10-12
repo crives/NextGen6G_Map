@@ -29,8 +29,9 @@ export default class Map1 extends Component {
        return (
            <Marker position={point} key={point.toString()} >
                 <Popup>
+                  <div>High Accident Zone!</div>
                    {/* <span>ADDRESS: {accidents['address']}, {incident['city']} - {incident['zip_code']}</span> */}
-                 <br/>
+                 {/* <br/> */}
                    {/* <span>BATTALION: {incident['battalion']}</span><br/> */}
                 </Popup>
             </Marker>
