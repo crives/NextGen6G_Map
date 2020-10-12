@@ -39,6 +39,21 @@ const _onEdited = (e) => {
     this._onChange();
   }
 
+  const _onChange = () => {
+
+    // this._editableFG contains the edited geometry, which can be manipulated through the leaflet API
+
+    const { onChange } = this.props;
+
+    if (!this._editableFG || !onChange) {
+      return;
+    }
+
+    const geojsonData = this._editableFG.leafletElement.toGeoJSON();
+    onChange(geojsonData);
+  }
+
+
   const _onMounted = (drawControl) => {
     console.log('_onMounted', drawControl);
   }
@@ -80,7 +95,7 @@ const LeafletDraw = (props) => (
        
         console.log(accidents.centerLongitude.toString() + ',' + accidents.centerLatitude.toString());
        return (
-        <Circle center={[accidents.centerLongitude, accidents.centerLatitude]} radius={accidents.radius * 111} key={accidents.centerLongitude.toString() + ',' + accidents.centerLatitude.toString()}/>
+        <Circle center={[accidents.centerLongitude, accidents.centerLatitude]} radius={accidents.radius * 80000} key={accidents.centerLongitude.toString() + ',' + accidents.centerLatitude.toString()}/>
 
          )
         })
