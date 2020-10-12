@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import Map from './components/Map1'
+import LeafletDraw from './components/LeafletDraw';
 
 class App extends Component {
   state = {
@@ -17,7 +18,9 @@ class App extends Component {
 
   render() {
    return (
-  <Map accidents={this.state.accidents}/>
+  <Map accidents={this.state.accidents}>
+    <LeafletDraw/>
+  </Map>
    );
   }
   }

@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
+import LeafletDraw from './LeafletDraw';
 
 export default class Map1 extends Component {
     state = {
-        lat: 37.7749,
-        lng: -122.4194,
+        lat: 47.5846,
+        lng: -122.3036,
         zoom: 13,
     }
     render() {
@@ -18,13 +19,15 @@ export default class Map1 extends Component {
                  attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                />
+            <LeafletDraw accidents= {this.props.accidents} />
+
                {
                  this.props.accidents.map(accidents => {
                       const point = [accidents['centerLongitude'],                 accidents['centerLatitude']]
        
        console.log(point);
        return (
-           <Marker position={point} key={accidents['Center_Lat']} >
+           <Marker position={point} key={point.toString()} >
                 <Popup>
                    {/* <span>ADDRESS: {accidents['address']}, {incident['city']} - {incident['zip_code']}</span> */}
                  <br/>
@@ -33,7 +36,7 @@ export default class Map1 extends Component {
             </Marker>
          )
         })
-       }
+        }
        </Map>
                 :
                 'Data is loading...'
