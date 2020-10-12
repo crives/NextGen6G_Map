@@ -23,7 +23,6 @@ export default class Map1 extends Component {
                       const point = [accidents['centerLongitude'],                 accidents['centerLatitude']]
        
        console.log(point);
-                      /// CHANGE THIS ////
        return (
            <Marker position={point} key={accidents['Center_Lat']} >
                 <Popup>
